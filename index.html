@@ -36,33 +36,41 @@
 
         <!-- Wednesday Marker -->
         <a-marker type="pattern" url="./wednesday.patt">
-            <!-- Test box to confirm marker detection -->
-            <a-box position="0 1 0" material="color: red;" scale="0.5 0.5 0.5" 
-                   animation="property: rotation; to: 0 360 0; loop: true; dur: 2000"></a-box>
+            <!-- Simple primitives that WILL show if marker detection works -->
+            <a-cylinder position="0 0 0" radius="0.3" height="1.5" color="red" 
+                        animation="property: rotation; to: 0 360 0; loop: true; dur: 4000"></a-cylinder>
+            <a-text value="WEDNESDAY" position="0 1 0" align="center" color="white" 
+                    geometry="primitive: plane; width: 2; height: 0.5" 
+                    material="color: black; opacity: 0.8"></a-text>
             
+            <!-- GLTF Model (hidden for now) -->
             <a-entity 
                 id="wednesday-model"
                 class="clickable"
                 gltf-model="#wednesday" 
-                position="0 0 0" 
-                scale="10 10 10"
-                animation="property: rotation; to: 0 360 0; loop: true; dur: 8000">
+                position="2 0 0" 
+                scale="20 20 20"
+                visible="true">
             </a-entity>
         </a-marker>
         
         <!-- Thing Marker -->
         <a-marker type="pattern" url="./thing.patt">
-            <!-- Test box to confirm marker detection -->
-            <a-box position="0 1 0" material="color: blue;" scale="0.5 0.5 0.5" 
-                   animation="property: rotation; to: 0 360 0; loop: true; dur: 2000"></a-box>
+            <!-- Simple primitives that WILL show if marker detection works -->
+            <a-box position="0 0 0" width="1" height="1" depth="1" color="blue" 
+                   animation="property: rotation; to: 360 0 360; loop: true; dur: 3000"></a-box>
+            <a-text value="THING" position="0 1 0" align="center" color="white" 
+                    geometry="primitive: plane; width: 1.5; height: 0.5" 
+                    material="color: black; opacity: 0.8"></a-text>
             
+            <!-- GLTF Model (hidden for now) -->
             <a-entity 
                 id="thing-model"
                 class="clickable"
                 gltf-model="#thing" 
-                position="0 0 0" 
-                scale="15 15 15"
-                animation="property: rotation; to: 0 360 0; loop: true; dur: 6000">
+                position="2 0 0" 
+                scale="25 25 25"
+                visible="true">
             </a-entity>
         </a-marker>
 

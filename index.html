@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Box</title>
+
+    <!-- Latest A-Frame -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- Latest AR.js -->
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar-nft.min.js"></script>
+
+
+</head>
+
+<body style="margin: 0px; overflow: hidden;">
+
+    
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+        <!-- Basic lighting -->
+        <a-light type="ambient" color="#ffffff" intensity="0.6"></a-light>
+        <a-light type="directional" color="#ffffff" intensity="1" position="0 5 5"></a-light>
+
+        <!-- Assets -->
+        <a-assets>
+            <a-asset-item id="wednesday" src="wednesday/scene.gltf"></a-asset-item>
+            <a-asset-item id="thing" src="thing/scene.gltf"></a-asset-item>
+    
+        </a-assets>
+        
+        <!-- Thing Model -->
+        <a-marker type="pattern" url="thing/thing.patt">
+            <a-entity gltf-model="#thing" position="0 0 0" scale="1 1 1"></a-entity>
+        </a-marker>
+
+        <!-- Wednesday Model -->
+        <a-marker type="pattern" url="wednesday/wednesday.patt">
+            <a-entity gltf-model="#wednesday" position="0 0 0" scale="40 40 40"></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+        // Scene loaded event
+        document.querySelector('a-scene').addEventListener('loaded', function() {
+            console.log('AR scene loaded successfully');
+        });
+    </script>
+</body>
+</html>

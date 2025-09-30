@@ -7,51 +7,57 @@
 
     <!-- Latest A-Frame -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <!-- Latest AR.js for marker-based AR -->
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <!-- Latest AR.js -->
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar-nft.min.js"></script>
 </head>
 
 <body style="margin: 0px; overflow: hidden;">
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
-        
-        <!-- Assets should be a direct child of a-scene -->
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" cursor="rayOrigin: mouse" raycaster="objects: .clickable; far: 100">
+        <a-cursor 
+        color="yellow" 
+        opacity="0" 
+        radius-inner="0.01" 
+        radius-outer="0.02">
+        </a-cursor>
+
+        <!-- Studio Lighting Setup -->
+        <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
+        <a-light type="directional" color="#ffffff" intensity="3" position="-3 5 4"></a-light>
+        <a-light type="directional" color="#ffffff" intensity="1.2" position="3 3 2"></a-light>
+        <a-light type="directional" color="#ffffff" intensity="2.5" position="0 5 -5"></a-light>
+        <a-light type="spot" angle="45" penumbra="0.5" color="#f0f0ff" intensity="1.8" 
+                 position="0 3 -8"></a-light>
+
+        <!-- Assets -->
         <a-assets>
             <a-asset-item id="wednesday" src="wednesday/scene.gltf"></a-asset-item>
             <a-asset-item id="thing" src="thing/scene.gltf"></a-asset-item>
         </a-assets>
 
-        <!-- Markers -->
-        <a-marker type="pattern" url="./wednesday.patt" id="wednesday-marker">
-            <!-- Test box to verify marker detection -->
-            <a-box position="0 0.5 0" material="color: red;" scale="0.3 0.3 0.3" animation="property: rotation; to: 0 360 0; loop: true; dur: 2000"></a-box>
-            
+        <!-- Wednesday Marker -->
+        <a-marker type="pattern" url="./wednesday.patt">
             <a-entity 
                 id="wednesday-model"
                 class="clickable"
                 gltf-model="#wednesday" 
                 position="0 0 0" 
-                scale="1 1 1"
-                rotation="0 0 0">
+                scale="1 1 1">
             </a-entity>
         </a-marker>
         
-        <a-marker type="pattern" url="./thing.patt" id="thing-marker">
-            <!-- Test box to verify marker detection -->
-            <a-box position="0 0.5 0" material="color: blue;" scale="0.3 0.3 0.3" animation="property: rotation; to: 0 360 0; loop: true; dur: 2000"></a-box>
-            
+        <!-- Thing Marker -->
+        <a-marker type="pattern" url="./thing.patt">
             <a-entity 
                 id="thing-model"
                 class="clickable"
                 gltf-model="#thing" 
                 position="0 0 0" 
-                scale="1 1 1"
-                rotation="0 0 0">
+                scale="1 1 1">
             </a-entity>
         </a-marker>
 
         <!-- Camera -->
         <a-entity camera></a-entity>
-        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .cube-side; showLine: true; interval: 100"></a-entity>
     </a-scene>
 </body>
 
